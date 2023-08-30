@@ -1,0 +1,35 @@
+$transparent: transparent;
+
+//Main
+$primary: var(--c-primary);
+$primary20: var(--c-primary20);
+$dprimary: var(--c-dprimary);
+$secondary: var(--c-secondary);
+$loadingPrimary: var(--c-loadingPrimary);
+
+//Surfaces
+$sBackground: var(--c-sBackground);
+$sPrimary: var(--c-sPrimary);
+$sInput: var(--c-sInput);
+$sDisabled: var(--c-sDisabled);
+
+//Text
+$tPrimary: var(--c-tPrimary);
+$tSecondary: var(--c-tSecondary);
+$tDisabled: var(--c-tDisabled);
+
+//Icons
+$iPrimary: var(--c-iPrimary);
+$iSecondary: var(--c-iSecondary);
+$iDisabled: var(--c-iDisabled);
+
+//Line and Borders
+$linePrimary: var(--c-linePrimary);
+
+//Feedbacks
+$error: var(--c-error);
+$warning: var(--c-warning);
+$success: var(--c-success);
+$llError: var(--c-llError);
+$llWarning: var(--c-llWarning);
+$llSuccess: var(--c-llSuccess);
