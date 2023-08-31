@@ -36,7 +36,7 @@ const Textarea = ({ className, error, ...rest }: ITextAreaProps) => {
   return (
     <textarea
       className={clsx([
-        "rounded-lg text-tPrimary bg-sPrimary p-4 h-14 text-button-medium placeholder:text-par-medium placeholder:text-tDisabled border-none !outline-0 focus:shadow-inputFocus caret-primary transition-all duration-300 custom-scroll",
+        "rounded-lg text-tPrimary bg-sPrimary p-4 h-14 text-button-medium placeholder:text-par-medium placeholder:text-tDisabled border border-linePrimary !outline-0 focus:shadow-inputFocus caret-primary transition-all duration-300 custom-scroll",
         rest.disabled && "text-tDisabled bg-sDisabled",
         error &&
           "!text-error !caret-error !shadow-inputError focus:!shadow-inputErrorFocus",
