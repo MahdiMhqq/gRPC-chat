@@ -24,8 +24,14 @@ function ErrorPage() {
   return (
     <>
       <Navigation />
-      <h1>{title}</h1>
-      <div>{message}</div>
+      <main className="p-4">
+        <h1 className="text-center text-[6rem] font-bold text-primary mt-8">
+          {title}
+        </h1>
+        <div className="text-center text-sub1-medium text-tPrimary ">
+          {message}
+        </div>
+      </main>
     </>
   );
 }

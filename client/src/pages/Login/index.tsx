@@ -2,17 +2,23 @@ import BasicButton from "components/BasicButton";
 import Input from "components/Input";
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { submitHandler } from "./services";
 
-interface IFormSchema {
+export interface IFormSchema {
   username: string;
 }
 
 function LoginPage() {
+  //REACT ROUTER
+  const navigate = useNavigate();
+
   //STATES
   const [formData, setFormData] = useState<IFormSchema>({ username: "" });
   const [formErrors, setFormErrors] = useState<IFormSchema>({
     username: "",
   });
+
   return (
     <main className="p-4">
       <img
@@ -28,6 +34,7 @@ function LoginPage() {
         className="mt-8 flex flex-col items-center justify-center gap-4 md:flex-row"
         onSubmit={(e) => {
           e.preventDefault();
+          submitHandler(formData, setFormErrors, navigate);
         }}
       >
         <Input

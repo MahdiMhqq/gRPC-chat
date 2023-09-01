@@ -1,17 +1,4 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
 function SplashPage() {
-  //NEXT ROUTER
-  const navigate = useNavigate();
-
-  //LIFE CYCLE HOOKS
-  useEffect(() => {
-    setTimeout(() => {
-      navigate("/login", { replace: true });
-    }, 1000);
-  }, []);
-
   return (
     <div className="relative w-full h-screen overflow-hidden bg-sBackground select-none pointer-events-none">
       <div className="absolute left-1/2 -translate-x-1/2 top-1/3 w-1/2 md:w-1/3 max-w-md">

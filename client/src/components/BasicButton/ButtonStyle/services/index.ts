@@ -29,7 +29,7 @@ const typeStyles: Record<IButtonStyles["kind"], string> = {
 };
 
 const disableStyles = {
-  ord: "cursor-not-allowed bg-bDisabled text-iDisabled active:bg-tDisabled",
+  ord: "cursor-not-allowed bg-sDisabled text-iDisabled active:bg-tDisabled",
   border:
     "bg-transparent !border-iDisabled !text-iDisabled hover:bg-iDisabled hover:border-transparent active:bg-tDisabled cursor-not-allowed",
 };

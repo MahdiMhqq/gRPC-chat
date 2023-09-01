@@ -163,12 +163,12 @@ textarea:focus-visible {
   /* width */
   &::-webkit-scrollbar {
     width: 0.3125rem;
-    background: $sBackground;
+    background: transparent;
   }
 
   /* Track */
   &::-webkit-scrollbar-track {
-    background: $sBackground;
+    background: transparent;
   }
 
   /* Handle */
@@ -197,4 +197,12 @@ textarea:focus-visible {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.gradient-navigation {
+  background-image: linear-gradient(to bottom, 80% $sBackground, $transparent);
+}
+
+.gradient-textarea {
+  background-image: linear-gradient(to top, 80% $sBackground, $transparent);
 }
