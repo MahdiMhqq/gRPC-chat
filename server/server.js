@@ -28,7 +28,10 @@ const join = (call, callback) => {
       msg: "Success",
     });
   } else {
-    callback(null, { error: 1, msg: "user already exist." });
+    callback(null, {
+      code: grpc.status.ALREADY_EXISTS,
+      details: "user already exist.",
+    });
   }
 };
 
@@ -60,6 +63,30 @@ server.addService(protoDescriptor.ChatService.service, {
 });
 
 server.bind(SERVER_URI, grpc.ServerCredentials.createInsecure());
+
+/******************************************** FAKE DATA */
+if (process.env.ENVIRONMENT == "development") {
+  const { fakerFA: faker } = require("@faker-js/faker");
+
+  for (let i = 0; i < 100; i++) {
+    usersInChat.push({
+      name: faker.internet.userName(),
+      id: faker.string.uuid(),
+    });
+  }
+
+  setInterval(() => {
+    observers.forEach((observer) => {
+      observer.call.write({
+        from: usersInChat[Math.floor(Math.random() * 100)].name,
+        time: new Date().toISOString(),
+        msg: faker.lorem.text(),
+        id: faker.string.uuid(),
+      });
+    });
+  }, 5000);
+}
+/******************************************** FAKE DATA */
 
 server.start();
 

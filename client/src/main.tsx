@@ -1,5 +1,6 @@
 // STYLES
 import "./assets/styles/index.scss";
+import "react-toastify/dist/ReactToastify.css";
 
 // REACT
 import React from "react";

@@ -1,27 +1,15 @@
-// import { ChatMessage } from "proto/chat_pb.js";
-
-import { ChatMessage } from "proto/chat_pb";
-import MsgBubble from "./components/MsgBubble";
-import Textarea from "components/TextArea";
+import MsgTextArea from "./components/MsgTextArea";
+import UsersList from "./components/UsersList";
+import MsgList from "./components/MsgList";
 
 function ChatPage() {
-  const x: ChatMessage.AsObject = {
-    from: "mamad",
-    msg: "chetori mamad?",
-    time: "2022-08-27T19:42:42Z",
-  };
-  const y: ChatMessage.AsObject = {
-    from: "bagher",
-    msg: "chetori mamad?",
-    time: "2022-08-27T19:42:42Z",
-  };
   return (
-    <div className="flex flex-col">
-      <section className="flex flex-col-reverse grow custom-scroll h-[calc(100dvh_-_6.75rem)] overflow-y-auto pt-[8rem]">
-        <MsgBubble msgData={x} />
-        <MsgBubble msgData={y} />
-      </section>
-      <Textarea className="w-full shrink-0 drop-shadow-2xl mt-4" />
+    <div className="h-[calc(100dvh_-_2rem)] flex gap-x-4">
+      <UsersList className="hidden md:flex md:basis-1/3 max-w-[10rem] h-full" />
+      <div className="flex flex-col items-stretch h-full md:basis-2/3 lg:basis-auto grow">
+        <MsgList />
+        <MsgTextArea className="w-full shrink-0 mt-auto" />
+      </div>
     </div>
   );
 }

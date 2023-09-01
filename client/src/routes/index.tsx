@@ -6,10 +6,12 @@ import ChatPage from "pages/Chat";
 import ProfilePage from "pages/Profile";
 import ErrorPage from "pages/Error";
 import SplashPage from "pages/Splash";
+import ProtectedRoutes from "components/ProtectedRoutes";
 
 const routes = createBrowserRouter([
   {
     path: "/",
+    element: <ProtectedRoutes />,
     errorElement: <ErrorPage />,
     children: [
       {

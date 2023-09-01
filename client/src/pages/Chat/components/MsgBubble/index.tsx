@@ -1,11 +1,12 @@
+import React from "react";
 import clsx from "clsx";
 import { DateTime } from "luxon";
 
-import { ChatMessage } from "proto/chat_pb";
+import type { ChatMessage } from "proto/chat";
 
 interface IMsgBubbleProps {
   className?: string;
-  msgData: ChatMessage.AsObject;
+  msgData: ChatMessage;
 }
 
 function MsgBubble({ className = "", msgData }: IMsgBubbleProps) {
@@ -64,4 +65,7 @@ function MsgBubble({ className = "", msgData }: IMsgBubbleProps) {
   );
 }
 
-export default MsgBubble;
+export default React.memo(
+  MsgBubble,
+  (prevProps, nextProps) => prevProps.msgData?.id === nextProps?.msgData?.id
+);
