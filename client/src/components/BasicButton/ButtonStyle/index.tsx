@@ -34,8 +34,8 @@ const MyButton = React.forwardRef(
         className={`flex items-center justify-center text-button relative rounded-lg transition duration-300 ${sizeStyle} ${typeStyle} ${className}`}
         disabled={disable}
         {...rest}
-        data-testid="button"
         ref={ref}
+        data-cy="my-button"
       >
         {loading && (
           <span className="flex items-center justify-center h-6 w-6 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
@@ -46,7 +46,10 @@ const MyButton = React.forwardRef(
             />
           </span>
         )}
-        <span className={loading ? "opacity-0 invisible" : "opacity-100"}>
+        <span
+          className={loading ? "opacity-0 invisible" : "opacity-100"}
+          data-cy="my-button-inner"
+        >
           {children}
         </span>
       </Tag>

@@ -15,7 +15,7 @@ function CircleSpinner({ className, innerSpinnerClass }: CircleSpinnerProps) {
       className={`${
         styles.loadingRing
       } inline-block relative w-6 aspect-square z-10 ${className ?? ""}`}
-      data-testid="loading-spinner"
+      data-cy="my-spinner"
     >
       <div
         className={`block absolute w-4/5 h-4/5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-transparent border-t-primary rounded-full ${

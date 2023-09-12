@@ -44,7 +44,7 @@ function BasicInput({
   const inputId = rest?.id ?? inputIdGenerated;
 
   return (
-    <div className={classNames?.wrapper}>
+    <div className={classNames?.wrapper} data-cy="my-input">
       {label && (
         <label
           htmlFor={inputId}
@@ -52,6 +52,7 @@ function BasicInput({
             "text-tPrimary text-button mb-2 select-none inline-block",
             classNames?.label,
           ])}
+          data-cy="my-input-label"
         >
           {label}
         </label>
@@ -67,6 +68,7 @@ function BasicInput({
               classNames?.prefix,
             ])}
             onClick={prefixClick}
+            data-cy="my-input-prefix"
           >
             {prefix}
           </div>
@@ -83,6 +85,7 @@ function BasicInput({
             classNames?.input,
           ])}
           type={type}
+          data-cy="my-input-main"
         />
         {suffix && (
           <div
@@ -91,13 +94,14 @@ function BasicInput({
               classNames?.suffix,
             ])}
             onClick={suffixClick}
+            data-cy="my-input-suffix"
           >
             {suffix}
           </div>
         )}
       </div>
       {/* {error && typeof error === "string" && (
-        <p className="flex gap-1 mt-1 text-error">
+        <p className="flex gap-1 mt-1 text-error" data-cy="my-input-error">
           <span className="flex items-center">
             <InfoCircle size="1rem" className="text-error" />
           </span>
