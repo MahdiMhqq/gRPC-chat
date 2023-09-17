@@ -46,7 +46,7 @@ function UsersMentionSuggest({
       {filteredUsers?.map((user) => (
         <p
           key={user.id}
-          className="text-par text-tPrimary p-1 hover:bg-primary20 transition cursor-pointer rounded-md"
+          className="p-1 cursor-pointer text-par text-tPrimary hover:bg-primary20 transition rounded-md"
           onClick={() => onSelect(newMsgCreator(msg, cursorPos, user))}
         >
           @{user.name}

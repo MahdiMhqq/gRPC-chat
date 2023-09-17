@@ -24,7 +24,7 @@ function Navigation({ className }: INavigationProps) {
     <header
       className={clsx("p-4 pb-8 gradient-navigation drop-shadow-lg", className)}
     >
-      <nav className="bg-secondary py-6 px-4 rounded-md">
+      <nav className="px-4 py-6 bg-secondary rounded-md">
         <ul className="flex items-center gap-x-3">
           <li>
             <NavLink
@@ -57,7 +57,7 @@ function Navigation({ className }: INavigationProps) {
               پروفایل
             </NavLink>
           </li>
-          <li className="list-none ms-auto h-7 w-7 rounded-md cursor-pointer hover:bg-primary20 flex items-center justify-center transition group">
+          <li className="flex items-center justify-center list-none cursor-pointer ms-auto h-7 w-7 rounded-md hover:bg-primary20 transition group">
             <Link to=".." relative="path">
               <ArrowLeft2 size="1.5rem" className="group-hover:text-tPrimary" />
             </Link>

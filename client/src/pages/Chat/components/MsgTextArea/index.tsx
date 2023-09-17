@@ -31,7 +31,7 @@ function MsgTextArea({ className = "" }: IMsgTextAreaProps) {
         submit();
       }}
     >
-      <div className="shrink-0 grow relative">
+      <div className="relative shrink-0 grow">
         <UsersMentionSuggest
           className="absolute left-0 right-0 bottom-full"
           msg={msgText}
@@ -57,7 +57,7 @@ function MsgTextArea({ className = "" }: IMsgTextAreaProps) {
       <BasicButton
         className="!h-12 !w-12 hover:shadow-xl"
         type="submit"
-        disable={msgText.trim() === ""}
+        disabled={msgText.trim() === ""}
       >
         <Send
           variant="Bold"

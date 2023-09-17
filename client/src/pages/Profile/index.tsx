@@ -19,14 +19,14 @@ function ProfilePage() {
   return (
     <>
       <div className="mx-auto max-w-[9rem] w-1/2 xs:w-1/4 aspect-square rounded-full border-4 border-sDisabled p-3 mt-[7.75rem]">
-        <User variant="TwoTone" className="text-tDisabled w-full h-full" />
+        <User variant="TwoTone" className="w-full h-full text-tDisabled" />
       </div>
-      <h5 className="text-h5-medium text-tPrimary text-center mt-3">
+      <h5 className="mt-3 text-center text-h5-medium text-tPrimary">
         نام کاربری: @{username}
       </h5>
       <BasicButton
-        kind="border"
-        className="w-full md:max-w-max md:mx-auto mt-8 whitespace-nowrap"
+        variant="border"
+        className="w-full mt-8 md:max-w-max md:mx-auto whitespace-nowrap"
         onClick={logout}
       >
         خروج از حساب کاربری

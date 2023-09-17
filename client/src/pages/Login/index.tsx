@@ -26,12 +26,12 @@ function LoginPage() {
         src="/snappFoodLogoBig.png"
         alt={"snappFood"}
       />
-      <h1 className="text-h2-medium text-tPrimary mt-4">به چت روم خوش آمدید</h1>
-      <p className="text-sub2 text-tDisabled mt-2">
+      <h1 className="mt-4 text-h2-medium text-tPrimary">به چت روم خوش آمدید</h1>
+      <p className="mt-2 text-sub2 text-tDisabled">
         برای ورود به چت نام کاربری خود را وارد کنید
       </p>
       <form
-        className="mt-8 flex flex-col items-center justify-center gap-4 md:flex-row"
+        className="flex flex-col items-center justify-center mt-8 gap-4 md:flex-row"
         onSubmit={(e) => {
           e.preventDefault();
           submitHandler(formData, setFormErrors, navigate);
@@ -47,7 +47,7 @@ function LoginPage() {
           }}
           error={formErrors.username}
         />
-        <BasicButton type="submit" className="md:basis-1/4 w-full" size="xl">
+        <BasicButton type="submit" className="w-full md:basis-1/4" size="xl">
           ورود
         </BasicButton>
       </form>

@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { CloseCircle, Eye, EyeSlash, SearchNormal1 } from "iconsax-react";
+import { Eye, EyeSlash } from "iconsax-react";
 
-import BasicInput, { IBasicInputProps } from "../BasicInput";
+import BasicInput, { IBasicInputProps } from "./BasicInput";
 
 interface IInputProps
   extends Omit<
     IBasicInputProps,
     "type" | "suffixCustomClass" | "prefixCustomClass"
   > {
-  type?: "text" | "password" | "search" | "suffix" | "prefix" | "number";
+  type?: "text" | "password" | "suffix" | "prefix" | "number";
   classNames?: {
     wrapper?: string;
     label?: string;
@@ -24,13 +24,11 @@ function Input({ type = "text", classNames, ...rest }: IInputProps) {
 
   return (
     <>
-      {type === "text" ? (
-        <BasicInput classNames={classNames} type={type} {...rest} />
-      ) : type === "password" ? (
+      {type === "password" ? (
         <BasicInput
           {...rest}
           type={localType}
-          suffixClick={() =>
+          onSuffixClick={() =>
             setLocalType((prev) => (prev !== "password" ? "password" : "text"))
           }
           suffix={
@@ -39,31 +37,14 @@ function Input({ type = "text", classNames, ...rest }: IInputProps) {
                 variant="Bold"
                 className="text-iPrimary"
                 size="1.5rem"
+                data-cy="my-input-pass-invisible"
               />
             ) : (
-              <Eye variant="Bold" className="text-iPrimary" size="1.5rem" />
-            )
-          }
-          classNames={{
-            ...classNames,
-            suffix: `hover:bg-primary/0.2 ${classNames?.suffix ?? ""}`,
-          }}
-        />
-      ) : type === "search" ? (
-        <BasicInput
-          {...rest}
-          type={"text"}
-          suffixClick={() =>
-            rest.value !== "" && rest.suffixClick && rest.suffixClick()
-          }
-          suffix={
-            rest.value === "" ? (
-              <SearchNormal1 size="1.5rem" className="text-iPrimary" />
-            ) : (
-              <CloseCircle
+              <Eye
                 variant="Bold"
+                className="text-iPrimary"
                 size="1.5rem"
-                className="text-iPrimary hover:text-error transition"
+                data-cy="my-input-pass-visible"
               />
             )
           }
@@ -72,11 +53,9 @@ function Input({ type = "text", classNames, ...rest }: IInputProps) {
             suffix: `hover:bg-primary/0.2 ${classNames?.suffix ?? ""}`,
           }}
         />
-      ) : type === "suffix" ? (
-        <BasicInput {...rest} type={"text"} classNames={classNames} />
-      ) : type === "number" ?(
-        <BasicInput classNames={classNames} type={"number"} {...rest} />
-      ):(
+      ) : type === "number" ? (
+        <BasicInput {...rest} type={"number"} classNames={classNames} />
+      ) : (
         <BasicInput {...rest} type={"text"} classNames={classNames} />
       )}
     </>

@@ -1,5 +1,4 @@
 import React, { ReactNode, useId } from "react";
-// import { InfoCircle } from "iconsax-react";
 import clsx from "clsx";
 
 export interface IBasicInputProps
@@ -14,8 +13,8 @@ export interface IBasicInputProps
   error?: string | boolean;
   prefix?: ReactNode;
   suffix?: ReactNode;
-  suffixClick?: () => void;
-  prefixClick?: () => void;
+  onSuffixClick?: () => void;
+  onPrefixClick?: () => void;
   disable?: boolean;
   type?: string;
   classNames?: {
@@ -32,8 +31,8 @@ function BasicInput({
   error,
   prefix,
   suffix,
-  suffixClick,
-  prefixClick,
+  onSuffixClick,
+  onPrefixClick,
   disable,
   type,
   classNames,
@@ -67,7 +66,7 @@ function BasicInput({
               "absolute top-1/2 -translate-y-1/2 start-4 transition duration-300 w-7 h-7 p-0.5 rounded-md z-[1] cursor-pointer",
               classNames?.prefix,
             ])}
-            onClick={prefixClick}
+            onClick={onPrefixClick}
             data-cy="my-input-prefix"
           >
             {prefix}
@@ -93,7 +92,7 @@ function BasicInput({
               "absolute top-1/2 -translate-y-1/2 end-4 transition duration-300 p-0.5 rounded-md z-[3] cursor-pointer",
               classNames?.suffix,
             ])}
-            onClick={suffixClick}
+            onClick={onSuffixClick}
             data-cy="my-input-suffix"
           >
             {suffix}
@@ -101,7 +100,7 @@ function BasicInput({
         )}
       </div>
       {/* {error && typeof error === "string" && (
-        <p className="flex gap-1 mt-1 text-error" data-cy="my-input-error">
+        <p className="flex mt-1 gap-1 text-error" data-cy="my-input-error">
           <span className="flex items-center">
             <InfoCircle size="1rem" className="text-error" />
           </span>

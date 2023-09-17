@@ -1,55 +1,76 @@
-import { ReactNode } from "react";
+import React from "react";
+import clsx from "clsx";
 
-import MyButton from "./ButtonStyle";
+import CircleSpinner from "components/CircleSpinner";
 
-export interface BasicButtonProps {
-  /** Indicating the size of Button */
+import { buttonStyles } from "./services";
+
+export interface IBasicButtonProps
+  extends Omit<
+    React.DetailedHTMLProps<
+      React.ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    >,
+    "className"
+  > {
   size?: "sm" | "md" | "lg" | "xl";
-  /** For customizable purposes */
   className?: string;
-  /** Button Type */
-  type?: string;
-  /** Button Variant */
-  kind?: "primary" | "border";
-  /** Button inner elements to be rendered */
-  children?: ReactNode;
-  /** Function That Calls when button clicked */
-  onClick?: () => void;
-  /** Disable the button whenever needed */
-  disable?: boolean;
-  /** Indicated if the button is a Link or Button */
-  isLink?: boolean;
-  /** Href of Link Button */
-  linkHref?: string;
-  /** Sometimes there is need to show a loading spinner inside of button */
+  variant?: "primary" | "border";
   loading?: boolean;
 }
 
-/** BasicButton of all project */
-function BasicButton({
-  size = "xl",
-  className,
-  kind = "primary",
-  type,
-  children,
-  onClick,
-  disable,
-  loading = false,
-}: BasicButtonProps) {
-  return (
-    <MyButton
-      as={"button"}
-      size={size}
-      kind={kind}
-      className={className}
-      disable={disable}
-      loading={loading}
-      onClick={onClick}
-      type={type}
-    >
-      {children}
-    </MyButton>
-  );
-}
+const BasicButton = React.forwardRef<HTMLButtonElement, IBasicButtonProps>(
+  (
+    {
+      children,
+      disabled = false,
+      loading = false,
+      size = "lg",
+      variant = "primary",
+      className = "",
+      ...rest
+    },
+    ref
+  ) => {
+    //VARIABLES
+    const { sizeStyle, variantStyle } = buttonStyles({
+      size,
+      variant,
+      disabled,
+    });
+
+    return (
+      <button
+        className={clsx(
+          "flex items-center justify-center text-button relative rounded-lg transition duration-300",
+          sizeStyle,
+          variantStyle,
+          className
+        )}
+        ref={ref}
+        {...rest}
+        data-cy="my-button"
+      >
+        {loading && (
+          <span className="absolute flex items-center justify-center w-6 h-6 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+            <CircleSpinner
+              innerSpinnerClass={
+                variant === "primary" ? `!border-t-tSecondary` : undefined
+              }
+            />
+          </span>
+        )}
+        <span
+          className={loading ? "opacity-0 invisible" : "opacity-100"}
+          data-cy="my-button-inner"
+        >
+          {children}
+        </span>
+      </button>
+    );
+  }
+);
+
+BasicButton.displayName = "BasicButton";
 
 export default BasicButton;

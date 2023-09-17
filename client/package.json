@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "cy:open": "npx cypress open",
     "preview": "vite preview",
     "proto-ts": "npx protoc --ts_out src/proto --proto_path src/proto src/proto/chat.proto"
   },
